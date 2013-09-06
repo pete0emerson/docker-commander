@@ -1,13 +1,12 @@
 [Unit]
-Description=etcd
-Wants=coreos-c10n.service
-After=coreos-c10n.service
+Description=etcd local
 
 [Service]
 User=etcd
 PermissionsStartOnly=true
+ExecStartPre=/bin/systemctl kill etcd.service
 ExecStartPre=/usr/bin/etcd-pre-exec
-ExecStart=/usr/bin/etcd -cl 0.0.0.0 -d /var/lib/etcd -f
+ExecStart=/usr/bin/etcd -d /var/lib/etcd -f -cl 0.0.0.0
 
 Restart=always
 # Set a longish timeout in case this machine isn't behaving
@@ -15,4 +14,4 @@ Restart=always
 RestartSec=10s
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=local.target
