@@ -48,12 +48,12 @@ if args.reconfigure_etcd:
 	if not args.debug:
 		result = subprocess.call(ssh_command)
 
-	ssh_command = ['ssh', '-i', config['IdentityFile'], '-p', config['Port'], config['User'] + '@' + config['HostName'], 'sudo', 'cp', './etcd.service', '/media/state/units']
+	ssh_command = ['ssh', '-i', config['IdentityFile'], '-p', config['Port'], config['User'] + '@' + config['HostName'], 'sudo', 'cp', './etcd-local.service', '/media/state/units']
 	print ' '.join(ssh_command)
 	if not args.debug:
 		result = subprocess.call(ssh_command)
 
-	ssh_command = ['ssh', '-i', config['IdentityFile'], '-p', config['Port'], config['User'] + '@' + config['HostName'], 'sudo', 'systemctl', 'restart', 'etcd.service']
+	ssh_command = ['ssh', '-i', config['IdentityFile'], '-p', config['Port'], config['User'] + '@' + config['HostName'], 'sudo', 'systemctl', 'restart', 'local-enable.service']
 	print ' '.join(ssh_command)
 	if not args.debug:
 		result = subprocess.call(ssh_command)
