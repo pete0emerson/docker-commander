@@ -46,7 +46,7 @@ Build the [Docker][docker] docker image from scratch (below) or skip and the ima
 from https://index.docker.io.
 
 ```
-sudo docker build -t USERNAME/NAME .
+core@localhost ~ $ sudo docker build -t USERNAME/NAME .
 ```
 
 Bring up the redis server, one or more receivers, one or more transmitters, and one or more processors.
