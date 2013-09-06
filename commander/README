@@ -1,0 +1,4 @@
+# systemctl stop update-engine-reboot-manager.service
+
+sudo docker build .
+sudo docker build -t pete/base . ; sudo docker run -i -t pete/base /bin/bash

@@ -1,0 +1,18 @@
+[Unit]
+Description=etcd
+Wants=coreos-c10n.service
+After=coreos-c10n.service
+
+[Service]
+User=etcd
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/etcd-pre-exec
+ExecStart=/usr/bin/etcd -cl 0.0.0.0 -d /var/lib/etcd -f
+
+Restart=always
+# Set a longish timeout in case this machine isn't behaving
+# nicely and bothering the rest of the cluster
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
