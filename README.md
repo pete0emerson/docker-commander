@@ -18,7 +18,7 @@ Bring the CoreOS VM up. It will download the image if you don't have it already.
 docker-commander $ vagrant up
 ```
 
-The setup.py script will copy necessary code to the CoreOS VM. If `--disable-reboot` is thrown, CoreOS won't auto-update and reboot itself.
+The setup.py script will copy necessary code to the CoreOS VM. If `--disable-reboot` is thrown, CoreOS won't auto-update and reboot itself occasionally.
 `--reconfigure-etcd` is necessary to open etcd up to the Docker containers, but in the next release of CoreOS this will be the default.
 
 ```
