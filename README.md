@@ -1,7 +1,9 @@
-Installation dependencies
+# Installation dependencies
 
 * [Virtualbox][virtualbox] 4.0 or greater.
 * [Vagrant][vagrant] 1.2.3 or greater.
+
+# Instructions
 
 Clone the repository
 
@@ -69,3 +71,7 @@ root@8765b127b0e2:/# /root/commander.py --host=172.17.0.62 --host=172.17.0.64 --
 172.17.0.64 => ca8da7d144cc
 172.17.0.65 => 5a50c396303d
 ```
+
+[virtualbox]: https://www.virtualbox.org/
+[vagrant]: http://downloads.vagrantup.com/
+
