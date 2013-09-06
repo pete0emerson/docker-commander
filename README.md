@@ -12,7 +12,7 @@ Clone the repository
 ~ $ cd docker-commander
 ```
 
-Bring the CoreOS VM up. Vagrant will download the CoreOS image if you don't have it already.
+Bring the [CoreOS][coreos] VM up. Vagrant will download the CoreOS image if you don't have it already.
 
 ```
 docker-commander $ vagrant up
@@ -35,7 +35,7 @@ docker-commander $ vagrant ssh
 core@localhost ~ $ cd commander
 ```
 
-Build the docker image from scratch (below) or skip and the image `pete/base` will be downloaded
+Build the [Docker][docker] docker image from scratch (below) or skip and the image `pete/base` will be downloaded
 from https://index.docker.io.
 
 ```
@@ -49,7 +49,7 @@ If you built your own Docker image, the launch.py commands below will need `--im
 core@localhost ~/commander $ ./launch.py --type=redis
 core@localhost ~/commander $ ./launch.py --type=receiver     # Run more than one if you want
 core@localhost ~/commander $ ./launch.py --type=transmitter  # Run more than one if you want
-core@localhost ~/commander $ ./launch.py --type=processor    # Run a bunch of these! (I've run @50 of them)
+core@localhost ~/commander $ ./launch.py --type=processor    # Run a bunch of these
 ```
 
 Fire up a new container and run a shell.
@@ -77,4 +77,5 @@ root@8765b127b0e2:/# /root/commander.py --host=172.17.0.62 --host=172.17.0.64 --
 
 [virtualbox]: https://www.virtualbox.org/
 [vagrant]: http://downloads.vagrantup.com/
-
+[coreos]: http://coreos.com/
+[docker]: http://docker.io/
