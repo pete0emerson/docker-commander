@@ -18,8 +18,8 @@ Bring the CoreOS VM up. It will download the image if you don't have it already.
 docker-commander $ vagrant up
 ```
 
-The setup.py script will copy necessary code to the CoreOS VM. If --disable-reboot is thrown, CoreOS won't auto-update and reboot itself.
---reconfigure-etcd is necessary to open etcd up to the Docker containers, but in the next release of CoreOS this will be the default.
+The setup.py script will copy necessary code to the CoreOS VM. If `--disable-reboot` is thrown, CoreOS won't auto-update and reboot itself.
+`--reconfigure-etcd` is necessary to open etcd up to the Docker containers, but in the next release of CoreOS this will be the default.
 
 ```
 docker-commander $ ./setup.py --commander --disable-reboot --reconfigure-etcd
@@ -33,14 +33,14 @@ docker-commander $ vagrant ssh
 core@localhost ~ $ cd commander
 ```
 
-Build the docker image from scratch (below) or skip and the image pete/base will be downloaded from https://index.docker.io.
+Build the docker image from scratch (below) or skip and the image `pete/base` will be downloaded from https://index.docker.io.
 
 ```
 sudo docker build -t USERNAME/NAME .
 ```
 
 Bring up the redis server, one or more receivers, one or more transmitters, and one or more processors.
-If you built your own Docker image, the launch.py commands below will need --image USERNAME/NAME added to them.
+If you built your own Docker image, the launch.py commands below will need `--image USERNAME/NAME` added to them.
 
 ```
 core@localhost ~/commander $ ./launch.py --type=redis
