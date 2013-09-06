@@ -12,14 +12,16 @@ Clone the repository
 ~ $ cd docker-commander
 ```
 
-Bring the CoreOS VM up. It will download the image if you don't have it already.
+Bring the CoreOS VM up. Vagrant will download the CoreOS image if you don't have it already.
 
 ```
 docker-commander $ vagrant up
 ```
 
-The setup.py script will copy necessary code to the CoreOS VM. If `--disable-reboot` is thrown, CoreOS won't auto-update and reboot itself occasionally.
-`--reconfigure-etcd` is necessary to open etcd up to the Docker containers, but in the next release of CoreOS this will be the default.
+The setup.py script will copy necessary code to the CoreOS VM. If `--disable-reboot` is thrown,
+CoreOS won't auto-update and reboot itself occasionally.
+`--reconfigure-etcd` is necessary to open etcd up to the Docker containers, but in the next release
+of CoreOS this will be the default.
 
 ```
 docker-commander $ ./setup.py --commander --disable-reboot --reconfigure-etcd
@@ -33,7 +35,8 @@ docker-commander $ vagrant ssh
 core@localhost ~ $ cd commander
 ```
 
-Build the docker image from scratch (below) or skip and the image `pete/base` will be downloaded from https://index.docker.io.
+Build the docker image from scratch (below) or skip and the image `pete/base` will be downloaded
+from https://index.docker.io.
 
 ```
 sudo docker build -t USERNAME/NAME .
