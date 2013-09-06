@@ -1,7 +1,7 @@
 # docker-commander
 
 This set of scripts uses Redis as its storage engine and leverages Redis's blocking pop off of lists
-to avoid polling the database for command status. It also uses zeromq for all interprocess transportation.
+to avoid polling the database for command status. It also uses zeromq for all communication between components.
 This is based on [commander](https://github.com/pete0emerson/commander) which I wrote a few years ago.
 The big difference is that this uses [CoreOS][coreos] and [Docker][docker], just for fun.
 
