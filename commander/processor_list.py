@@ -1,15 +1,10 @@
 #!/usr/bin/env python
 
-import zmq
+#!/usr/bin/env python
+
 import json
-import subprocess
-from multiprocessing import Process
-from time import sleep
 import os
-from tempfile import mkstemp
-import argparse
 import urllib2
-import sys
 
 config = {}
 if 'etcd' in os.environ:
