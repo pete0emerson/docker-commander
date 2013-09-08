@@ -1,3 +1,10 @@
+# docker-commander
+
+This set of scripts uses Redis as its storage engine and leverages Redis's blocking pop off of lists
+to avoid polling the database for command status. It also uses zeromq for all communication between components.
+This is based on [commander](https://github.com/pete0emerson/commander) which I wrote a few years ago.
+The big difference is that this uses [CoreOS][coreos] and [Docker][docker], just for fun.
+
 # Installation dependencies
 
 * [Virtualbox][virtualbox] 4.0 or greater.
@@ -12,14 +19,16 @@ Clone the repository
 ~ $ cd docker-commander
 ```
 
-Bring the CoreOS VM up. It will download the image if you don't have it already.
+Bring the [CoreOS][coreos] VM up. Vagrant will download the CoreOS image if you don't have it already.
 
 ```
 docker-commander $ vagrant up
 ```
 
-The setup.py script will copy necessary code to the CoreOS VM. If --disable-reboot is thrown, CoreOS won't auto-update and reboot itself.
---reconfigure-etcd is necessary to open etcd up to the Docker containers, but in the next release of CoreOS this will be the default.
+The setup.py script will copy necessary code to the CoreOS VM. If `--disable-reboot` is thrown,
+CoreOS won't auto-update and reboot itself occasionally.
+`--reconfigure-etcd` is necessary to open etcd up to the Docker containers, but in the next release
+of CoreOS this will be the default.
 
 ```
 docker-commander $ ./setup.py --commander --disable-reboot --reconfigure-etcd
@@ -33,20 +42,21 @@ docker-commander $ vagrant ssh
 core@localhost ~ $ cd commander
 ```
 
-Build the docker image from scratch (below) or skip and the image pete/base will be downloaded from https://index.docker.io.
+Build the [Docker][docker] docker image from scratch (below) or skip and the image `pete/base` will be downloaded
+from https://index.docker.io.
 
 ```
-sudo docker build -t USERNAME/NAME .
+core@localhost ~ $ sudo docker build -t USERNAME/NAME .
 ```
 
 Bring up the redis server, one or more receivers, one or more transmitters, and one or more processors.
-If you built your own Docker image, the launch.py commands below will need --image USERNAME/NAME added to them.
+If you built your own Docker image, the launch.py commands below will need `--image USERNAME/NAME` added to them.
 
 ```
 core@localhost ~/commander $ ./launch.py --type=redis
 core@localhost ~/commander $ ./launch.py --type=receiver     # Run more than one if you want
 core@localhost ~/commander $ ./launch.py --type=transmitter  # Run more than one if you want
-core@localhost ~/commander $ ./launch.py --type=processor    # Run a bunch of these! (I've run @50 of them)
+core@localhost ~/commander $ ./launch.py --type=processor    # Run a bunch of these
 ```
 
 Fire up a new container and run a shell.
@@ -74,4 +84,5 @@ root@8765b127b0e2:/# /root/commander.py --host=172.17.0.62 --host=172.17.0.64 --
 
 [virtualbox]: https://www.virtualbox.org/
 [vagrant]: http://downloads.vagrantup.com/
-
+[coreos]: http://coreos.com/
+[docker]: http://docker.io/
